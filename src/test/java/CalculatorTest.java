@@ -7,6 +7,11 @@ import org.junit.jupiter.params.provider.MethodSource;
 
 import java.util.stream.Stream;
 
+import static org.hamcrest.MatcherAssert.assertThat;
+import static org.hamcrest.Matchers.instanceOf;
+import static org.hamcrest.Matchers.is;
+import static org.hamcrest.core.Is.isA;
+
 
 public class CalculatorTest {
 
@@ -18,17 +23,16 @@ public class CalculatorTest {
     }
 
     @Test
-    public void testMinus() {
-        final int a = 2, b = 1, expected = 1;
-        final int result = sut.minus.apply(a, b);
-        Assertions.assertEquals(expected, result);
+    public void classChecked_() {
+        assertThat(sut, instanceOf(Calculator.class));
+        assertThat(sut, isA(Calculator.class));
     }
 
     @Test
     public void testPow() {
-        final int a = 2, expected = 4;
-        final int result = sut.pow.apply(a);
-        Assertions.assertEquals(expected, result);
+        int intVal = 2;
+        int actual = sut.pow.apply(intVal);
+        assertThat(actual, is(4));
     }
 
     @Test
